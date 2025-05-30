@@ -246,3 +246,27 @@ const Home: React.FC = () => {
             </div>
           )
         }
+
+      <MethodCall
+      methodFunction={ async () => {
+        try{
+          const parsedAssetId = BigInt(inputAssetId);
+          const parsedAppId = BigInt(revokeAppId);
+          const clawbackAddress = await revokeMethods.changeClawBack(
+            algorand,
+            TransactionSigner,
+            parsedAppId,
+            activeAddress!,
+            parsedAssetId
+          )
+
+          const result = await clawbackAddress();
+          console.log(result," Successfull")
+        } catch (err){
+          console.error(err);
+          alert(" Failed to Change the cLawback address:");
+        } finally {
+
+        }
+      }}
+      text = "change claw back"/>
