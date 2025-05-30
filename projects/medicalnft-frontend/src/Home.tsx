@@ -172,7 +172,7 @@ const Home: React.FC = () => {
             </label>
           </div>
 
-          <MethodCall
+  <MethodCall
   methodFunction={async () => {
     setLoading(true);
     try {
