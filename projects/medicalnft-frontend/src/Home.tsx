@@ -150,7 +150,81 @@ const Home: React.FC = () => {
           )
         }
 
-            <div className="flex flex-col gap-2">
+        {/* <MethodCall
+  methodFunction={async () => {
+    if (assetId === 0n) {
+      alert("Create the Asset first!");
+      return;
+    }
+    setLoading(true);
+    try {
+      const transfer = methods.transferAsset(
+        algorand,
+        nftClient,
+        TransactionSigner,
+        activeAddress!,
+        assetId
+      );
+      await transfer();
+      alert("Transfer successful!");
+    } catch (error) {
+      alert("Transfer failed: ");
+    } finally {
+      setLoading(false);
+    }
+  }}
+  text={loading ? "Processing..." : "Get the asset"}
+/> */}
+          {/* <MethodCall
+          methodFunction={ async () => {
+            if (assetId === 0n) {
+            alert("Create the Asset first!");
+            return;
+            }
+          setLoading(true);
+          try {
+              const optin = methods.optIn(
+              algorand,
+              TransactionSigner,
+              activeAddress!,
+              assetId
+            );
+          await optin();
+          alert("Opt in successful!");
+          } catch (error) {
+          alert("Opt in failed: ");
+          } finally {
+          setLoading(false);
+          }
+            }}
+            text = "Opt in"
+            /> */}
+
+          {/* <MethodCall
+          methodFunction={ async () =>{
+            setLoading(true);
+            try{
+              const transfering = methods.assetTransferfromapp(
+                algorand,
+                nftClient,
+                TransactionSigner,
+                String(algosdk.getApplicationAddress(appId)),
+                assetId,
+                activeAddress!,
+              );
+              await transfering();
+              alert("Asset"+assetId+"transfered"+activeAddress)
+            }
+            catch(error) {
+              console.log("Asste transfer is failed");
+            } finally {
+              setLoading(false);
+            }
+          }}
+          text = "Transfer"
+          /> */}
+
+          <div className="flex flex-col gap-2">
             <label>
              App ID:
               <input
@@ -172,7 +246,7 @@ const Home: React.FC = () => {
             </label>
           </div>
 
-  <MethodCall
+          <MethodCall
   methodFunction={async () => {
     setLoading(true);
     try {
@@ -207,6 +281,7 @@ const Home: React.FC = () => {
   }}
   text={loading ? "Transferring..." : "Transfer from App"}
 />
+
 
 <MethodCall
   methodFunction={async () => {
@@ -246,7 +321,6 @@ const Home: React.FC = () => {
             </div>
           )
         }
-
       <MethodCall
       methodFunction={ async () => {
         try{
@@ -270,3 +344,12 @@ const Home: React.FC = () => {
         }
       }}
       text = "change claw back"/>
+
+
+        <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
+      </div>
+    </div>
+  )
+}
+
+export default Home
