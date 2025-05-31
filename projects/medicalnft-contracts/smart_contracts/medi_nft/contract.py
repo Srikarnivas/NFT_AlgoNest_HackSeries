@@ -84,3 +84,18 @@ class NFTRevoke(ARC4Contract):
             asset_amount= 0,
             fee=0,
         ).submit()
+      @abimethod()
+    def grant_access(self, holder: Account, duration_secs: UInt64) -> None:
+        assert self.access_active == 0, "Access already active"
+
+        self.access_holder = holder
+        self.access_expires_at = Global.latest_timestamp + duration_secs
+        self.access_active = UInt64(1)
+
+        # Send the NFT to the holder
+        itxn.AssetTransfer(
+            asset_receiver=holder,
+            xfer_asset=self.assetid,
+            asset_amount=1,
+            fee=0
+        ).submit()
