@@ -132,3 +132,7 @@ class NFTRevoke(ARC4Contract):
         self.access_active = UInt64(0)
         self.access_holder = Global.zero_address
         self.access_expires_at = UInt64(0)
+    @abimethod()
+    def get_status(self) -> tuple[Account, UInt64, UInt64]:
+        """Returns (current holder, expiry time, active flag)"""
+        return self.access_holder, self.access_expires_at, self.access_active
